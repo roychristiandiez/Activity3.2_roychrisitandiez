@@ -175,3 +175,10 @@ VALUES
     FROM Hero
     INNER JOIN Class ON Hero.class_id = Class.class_id
     WHERE Class.class_name = 'Archers';
+
+    SELECT Class.class_name, ROUND(AVG(Player.player_level),2) AS avg_player_level
+    FROM Player
+    INNER JOIN Hero ON Player.hero_id = Hero.hero_id
+    INNER JOIN Class ON Hero.class_id = Class.class_id
+    GROUP BY Class.class_name
+    ORDER BY avg_player_level DESC;
